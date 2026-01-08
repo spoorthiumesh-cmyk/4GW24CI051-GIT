@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int main() {
+    int n, tq, t = 0, wt = 0, tat = 0;
+    printf("Enter number of processes: ");
+    scanf("%d", &n);
+    int bt[10], rt[10];
+    for (int i = 0; i < n; i++) {
+        printf("Enter burst time for process %d: ", i + 1);
+        scanf("%d", &bt[i]);
+        rt[i] = bt[i];
+    }
+    printf("Enter time quantum: ");
+    scanf("%d", &tq);
+
+    printf("\nProcess\tTurnaround Time\tWaiting Time\n");
+    while (1) {
+        int done = 1;
+        for (int i = 0; i < n; i++) {
+            if (rt[i] > 0) {
+                done = 0;
+                if (rt[i] > tq) {
+                    t += tq;
+                    rt[i] -= tq;
+                } else {
+                    t += rt[i];
+                    printf("P%d\t\t%d\t\t%d\n", i + 1, t, t - bt[i]);
+                    wt += t - bt[i];
+                    tat += t;
+                    rt[i] = 0;
+                }
+            }
+        }
+        if (done == 1)
+            break;
+    }
+
+    printf("\nAverage Waiting Time: %.2f\n", (float)wt / n);
+    printf("Average Turnaround Time: %.2f\n", (float)tat / n);
+    return 0;
+}
