@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Queue Based Gatepass</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🚪 Gatepass Queue System</h1>
+
+<input id="name" placeholder="Enter Student Name">
+<button onclick="addStudent()">Add to Queue</button>
+
+<h2>Waiting Queue</h2>
+<ul id="queueList"></ul>
+
+<button onclick="processStudent()">Process Next</button>
+
+<h2>Processed Students (Final Output)</h2>
+<ul id="processedList"></ul>
+
+<script src="script.js"></script>
+</body>
+</html>
